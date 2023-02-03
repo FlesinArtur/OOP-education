@@ -1,8 +1,17 @@
 import sys
 
 
-class Number:
+class A:
+    x = 2
+    pass
 
+
+class B:
+    x = 1
+    pass
+
+
+class Number(A, B):
     def __init__(self, number):
         self.number = number
         if type(number) is not int:
@@ -38,6 +47,21 @@ def main():
     my_value = mynumber - mynumber1
     my_value = mynumber / mynumber1
 
+    print(f'{mynumber1.x}=')    # f-strings
+    print(f'{mynumber1.x=}')    # print(f'mynumber1.x={mynumber1.x}')
+
+
+def test():
+    print('Test!')
+
 
 if __name__ == "__main__":
-    main()
+    a = test
+
+    # print(test == a)
+
+    # The same
+    print(id(test) == id(a))
+    print(test is a)
+
+    # main()
