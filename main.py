@@ -36,6 +36,9 @@ class Number(A, B):
     def __truediv__(self, value):
         return Number(self.number / value.number)
 
+    def __eq__(self, value):
+        return self.number == value
+
 
 def main():
     mynumber = Number('12')
