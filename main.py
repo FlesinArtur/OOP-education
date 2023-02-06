@@ -2,7 +2,7 @@ import time
 
 
 def stopwatch(func):
-    def wrapper(*args, **kwargs):
+    def wrapper(*args, **kwargs) -> object:
         start = time.time()
         result = func(*args, **kwargs)
         end = time.time() - start
@@ -12,13 +12,14 @@ def stopwatch(func):
     return wrapper
 
 
-def list_count(count):
+def list_count(count: int):
     def list_count_(func):
-        def wrapper(*args, **kwargs):
+        def wrapper(*args, **kwargs) -> list:
             result = []
             for i in range(count):
                 result.append(func(*args, **kwargs))
-            return print(result)
+            print(result)
+            return result
         return wrapper
     return list_count_
 
