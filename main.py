@@ -51,7 +51,7 @@ class Number(A, B):
     def __add__(self, value):
         return Number(self.number + value.number)
 
-    @stopwatch
+    #@stopwatch
     def __sub__(self, value):
         return Number(self.number - value.number)
 
@@ -73,7 +73,12 @@ def main():
    #print(mynumber1)
     my_value = mynumber + mynumber1
     my_value = mynumber * mynumber1
-   #my_value = mynumber - mynumber1
+    #my_value = mynumber - mynumber1
+    #decor = stopwatch(mynumber - mynumber1)
+    #decor()
+    Number.__sub__ = stopwatch(Number.__sub__)
+    mynumber - mynumber1
+    #decor(mynumber, mynumber1)
    #my_value = mynumber / mynumber1
    #print(f'{mynumber1.x}=')    # f-strings
    #print(f'{mynumber1.x=}')    # print(f'mynumber1.x={mynumber1.x}')
