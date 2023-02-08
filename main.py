@@ -11,7 +11,6 @@ def stopwatch(func):
         return result
     return wrapper
 
-
 def list_count(count: int):
     def list_count_(func):
         def wrapper(*args, **kwargs) -> list:
@@ -55,7 +54,7 @@ class Number(A, B):
     def __sub__(self, value):
         return Number(self.number - value.number)
 
-    @list_count(3)
+    #@list_count(3)
     def __mul__(self, value):
         return Number(self.number * value.number)
 
@@ -65,6 +64,14 @@ class Number(A, B):
     def __eq__(self, value):
         return self.number == value
 
+    @classmethod
+    def name(cls):
+        return f"{cls.__name__=}"
+
+    @staticmethod
+    def print_staticmethod(*args, **kwargs):
+        print("I am staticmethod, my arguments:")
+        print(*args, **kwargs)
 
 def main():
     mynumber = Number('12')
@@ -76,8 +83,12 @@ def main():
     #my_value = mynumber - mynumber1
     #decor = stopwatch(mynumber - mynumber1)
     #decor()
+    print(Number.name())
+    Number.print_staticmethod(1, 2, 3)
     Number.__sub__ = stopwatch(Number.__sub__)
     mynumber - mynumber1
+    Number.__str__ = list_count(3)(Number.__str__)
+    print(mynumber1)
     #decor(mynumber, mynumber1)
    #my_value = mynumber / mynumber1
    #print(f'{mynumber1.x}=')    # f-strings
